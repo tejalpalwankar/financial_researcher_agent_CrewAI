@@ -1,54 +1,213 @@
-# FinancialResearcher Crew
 
-Welcome to the FinancialResearcher Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+# 📊 Financial Research Agent (CrewAI)
+**Multi-Agent AI System for Automated Company Research & Analysis**
 
-## Installation
+---
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## 📌 Overview
 
-First, if you haven't already, install uv:
+This project implements a **multi-agent financial research system** that automates:
+
+- Company-level **data collection from web sources**
+- Structured **research synthesis**
+- Professional **analyst-style reporting**
+
+The system separates responsibilities between **research and analysis**, mimicking how real financial teams operate.
+
+---
+
+## 🧠 Architecture
+
+```mermaid
+flowchart TD
+    A[User Input: Company] --> B[Researcher Agent]
+
+    B --> C[Raw Research Data]
+
+    C --> D[Analyst Agent]
+    D --> E[Structured Financial Report]
+
+    subgraph Workflow
+        B
+        D
+    end
+````
+
+---
+
+## ⚙️ How It Works
+
+### 1. Researcher Agent
+
+* Performs deep research on a company using web search
+* Focus areas:
+
+  * Company health
+  * Historical performance
+  * News & events
+  * Opportunities & risks
+
+📄 Defined in: 
+
+---
+
+### 2. Analyst Agent
+
+* Transforms research into a **structured report**
+* Adds:
+
+  * Executive summary
+  * Trend analysis
+  * Market insights
+  * Future outlook
+
+📄 Defined in: 
+
+---
+
+## 🔄 Task Pipeline
+
+The system follows a **sequential pipeline**:
+
+1. **Research Task**
+
+   * Collects structured company data
+2. **Analysis Task**
+
+   * Converts research into a professional report
+
+📄 Task definitions: 
+
+---
+
+## 🏗️ Orchestration
+
+* Managed using CrewAI
+* Sequential execution ensures:
+
+  * Research is completed before analysis
+* Output is saved automatically
+
+📄 Implementation: 
+
+---
+
+## 🛠️ Tech Stack
+
+* Python
+* CrewAI
+* OpenAI / Groq / DeepSeek LLMs
+* Serper API (web search)
+* Pydantic
+* YAML-based configuration
+
+---
+
+## 📂 Project Structure
+
+```bash
+financial-research-agent/
+│
+├── src/financial_researcher/
+│   ├── crew.py              # Agent orchestration
+│   ├── main.py              # Entry point
+│   └── config/
+│       ├── agents.yaml      # Agent definitions
+│       └── tasks.yaml       # Task pipeline
+│
+├── output/
+│   └── report.md            # Generated report
+│
+├── README.md
+```
+
+---
+
+## ▶️ Setup & Run
+
+### 1. Install dependencies
 
 ```bash
 pip install uv
-```
-
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+---
 
-- Modify `src/financial_researcher/config/agents.yaml` to define your agents
-- Modify `src/financial_researcher/config/tasks.yaml` to define your tasks
-- Modify `src/financial_researcher/crew.py` to add your own logic, tools and specific args
-- Modify `src/financial_researcher/main.py` to add custom inputs for your agents and tasks
+### 2. Configure environment variables
 
-## Running the Project
+Create `.env` file:
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+```env
+OPENAI_API_KEY=your_key
+SERPER_API_KEY=your_key
 ```
 
-This command initializes the financial_researcher Crew, assembling the agents and assigning them tasks as defined in your configuration.
+---
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### 3. Run the system
 
-## Understanding Your Crew
+```bash
+crewai run
+```
 
-The financial_researcher Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+---
 
-## Support
+## 📊 Example Use Case
 
-For support, questions, or feedback regarding the FinancialResearcher Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+**Input**
 
-Let's create wonders together with the power and simplicity of crewAI.
+```text
+Company: Apple
+```
+
+**Output**
+
+* Comprehensive research summary
+* Structured financial report
+* Executive-level insights
+* Saved to: `output/report.md`
+
+---
+
+## 🧩 Key Features
+
+* Multi-agent system (Research + Analysis separation)
+* Web-enabled real-time research
+* Structured report generation
+* Modular YAML-based configuration
+* Clean pipeline for extensibility
+
+---
+
+## 🔮 Future Improvements
+
+* Add valuation models (DCF, ratios)
+* Integrate real-time financial APIs
+* Add comparison across multiple companies
+* Build dashboard UI (Streamlit)
+* Add memory for historical tracking
+
+---
+
+## ⚠️ Note
+
+This project is based on a CrewAI template and has been extended with:
+
+* Structured research pipeline
+* Multi-agent separation of concerns
+* Production-style output generation
+
+---
+
+## ⭐ Summary
+
+This project demonstrates:
+
+* Multi-agent AI system design
+* Automated research workflows
+* LLM orchestration for structured outputs
+* Scalable and modular architecture
+
+- Or write **resume bullets that actually get shortlisted**
+```
